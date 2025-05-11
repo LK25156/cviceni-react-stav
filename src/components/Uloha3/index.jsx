@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import dice1Url from "./1.svg";
 import dice2Url from "./2.svg";
 import dice3Url from "./3.svg";
@@ -5,6 +6,7 @@ import dice4Url from "./4.svg";
 import dice5Url from "./5.svg";
 import dice6Url from "./6.svg";
 import "./kostka.css";
+
 
 const diceUrls = [dice1Url, dice2Url, dice3Url, dice4Url, dice5Url, dice6Url];
 
@@ -16,7 +18,7 @@ Zadání 4: Vypište v atributu `alt` správné číslo.
 */
 
 export const Uloha3 = () => {
-  const cisloNaKostce = 1; /* jedna až šest */
+  const [cisloNaKostce,setCisloNaKostce ]= useState (1); /* jedna až šest */
 
   return (
     <>
@@ -24,11 +26,11 @@ export const Uloha3 = () => {
         src={diceUrls[cisloNaKostce - 1]} /* indexy se číslují od nuly */
         width={60}
         height={60}
-        alt="Kostka s číslem @TODO"
+        alt= {`Kostka s číslem ${cisloNaKostce}`}   /*atribut alt*/
         className="kostka__ikona"
       />
-      <p className="kostka__text">Na kostce je číslo @TODO.</p>
-      <button className="kostka__akce">další</button>
+      <p className="kostka__text">Na kostce je číslo {cisloNaKostce}.</p>
+      <button className="kostka__akce" onClick={() => setCisloNaKostce (cisloNaKostce === 6 ? 1 : cisloNaKostce + 1)}>další</button>
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './carousel.css';
 
 /*
@@ -12,29 +13,31 @@ Bonus: Pozor na krajní hodnoty. Pokud dojdete na konec nebo začátek pole, tak
   v jejich směru už není žádný obrázek.
 */
 
-/*
-  Adresy obrázků:
-  /assets/WLUHO9A_xik.jpg
-  /assets/DA1eGglMmlg.jpg
-  /assets/kTxL6le0Wgk.jpg
-  /assets/7go5UASxmDY.jpg
-  /assets/YmATDIFsCmQ.jpg
-*/
+
+  const obrazky = [
+  "assets/WLUHO9A_xik.jpg",
+  "assets/DA1eGglMmlg.jpg",
+  "assets/kTxL6le0Wgk.jpg",
+  "assets/7go5UASxmDY.jpg",
+  "assets/YmATDIFsCmQ.jpg"
+ ]
 
 export const Uloha4 = () => {
+  const [poradi, setPoradi] = useState(0)
+
   return (
     <div className="carousel">
-      <button className="carousel__predchozi" aria-label="předchozí">
+      <button className="carousel__predchozi" aria-label="předchozí" onClick={() => setPoradi(poradi - 1)} disabled={poradi === 0}>
         ←
       </button>
       <div className="carousel__media">
         <img
           className="carousel__image"
-          src="https://source.unsplash.com/7go5UASxmDY/880x500"
+          src={obrazky[poradi]}
           alt=""
         />
       </div>
-      <button className="carousel__dalsi" aria-label="další">
+      <button className="carousel__dalsi" aria-label="další" onClick={() =>setPoradi(poradi + 1)} disabled={poradi === obrazky.length - 1} >
         →
       </button>
     </div>

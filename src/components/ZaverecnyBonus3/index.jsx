@@ -13,7 +13,7 @@ export const ZaverecnyBonus3 = () => {
 
   return (
     <>
-      Čas právě teď: <b>{casVSekundach}</b>
+      Čas právě teď: <b>{Math.floor(casVSekundach / 3600)} : {String(Math.floor(casVSekundach / 60)% 60).padStart(2, "0")}:{String(casVSekundach % 60).padStart(2, "0")}</b>
     </>
   )
 }

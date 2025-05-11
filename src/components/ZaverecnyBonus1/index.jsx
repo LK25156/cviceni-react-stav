@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import "./style.css"
 
 /*
@@ -9,16 +10,18 @@ Zadání 4. Poslední odstavec zobraz pouze v případě, že je text kratší n
 */
 
 export const ZaverecnyBonus1 = () => {
+  const [zadanyText, setZadanyText] = useState ("");
+  const pocetZnaku = zadanyText.length;
   return (
     <div className='formular'>
       <label>
-        Napiš něco: <input />
+        Napiš něco: <input onChange={(event) =>setZadanyText(event.target.value)} />
       </label>
       <p>
-        Do políčka výše uživatel napsal: <b>@TODO</b>
+        Do políčka výše uživatel napsal: <b>{zadanyText} </b>
       </p>
-      <p>Počet znaků: 0</p>
-      <p>Jako heslo by text neobstál.</p>
+      <p>Počet znaků:{pocetZnaku}  </p>
+      {pocetZnaku < 8 &&  <p>Jako heslo by text neobstál.</p>}
     </div>
   )
 }
